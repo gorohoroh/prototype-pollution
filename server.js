@@ -26,7 +26,7 @@ app.post('/todos/add', (req, res) => {
         .catch(error => res.json({error: error.message}))
 })
 
-app.get('/todos/', async (req, res) => {
+app.get('/todos/', (req, res) => {
     TodoItem.find({visible: true})
         .then(data => {
             res.json(data)
@@ -36,7 +36,7 @@ app.get('/todos/', async (req, res) => {
         })
 })
 
-app.get('/todos/:id', async (req, res) => {
+app.get('/todos/:id', (req, res) => {
     TodoItem.find({owner: req.params.id})
         .then(data => {
             res.json(data)
